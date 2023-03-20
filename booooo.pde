@@ -44,38 +44,46 @@
 //String[] text = loadStrings("bobo.txt");
 int wordBankLength = 7;
 String chosenWord;
-char[] bank;// = new char[chosenWord.length()];;
+char[] banks = new char[7];// = new char[chosenWord.length()];;
 char[] shuffledBank;
 //String[] text = loadStrings("bobo.txt");
 //char[] bank = new char[text.length];
 void setup() {
   size(100, 100);
-  letterBank('a');
+  //letterBank('a');
+  banks = letterBank(); 
+  println(banks); 
 }
-void letterBank(char letter) {
+char[] letterBank() {
   String[] text = loadStrings("bobo.txt");
   //char bank[]= new char[text.length];
   int wordIndex = int(random(0, text.length));
   String chosenWord = text[wordIndex];
-  bank  = new char[chosenWord.length()];
-  shuffledBank = new char[chosenWord.length()];
+  char[] bank = new char[chosenWord.length()];
+  ////shuffledBank = new char[chosenWord.length()];
+  boolean lengthLoop = true;
+  while(lengthLoop){
+    wordIndex = int(random(0, text.length));
+    chosenWord = text[wordIndex];
+     bank  = new char[chosenWord.length()];
+    //shuffledBank = new char[chosenWord.length()];
   if (chosenWord.length() == wordBankLength) {
   //char[] bank;
     println(chosenWord);
     for (int i=0; i<= chosenWord.length()-1; i++) {
       //bank 
       bank[i] = chosenWord.charAt(i);
-      //shuffledBank = 
-      //shuffledBank = 
-      //println(bank[i]);
-      //printArray(bank);
+      lengthLoop = false;
     }
-    printArray(bank);
-    
-  } else {
-    letterBank('a');
-  }
+  
 }
+  }
+  return bank;
+}
+
+
+
+
 
 void shuffleIndex(char array[]){
    for (int i=0; i<= array.length; i++){
